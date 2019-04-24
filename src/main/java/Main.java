@@ -10,6 +10,10 @@ import java.util.Set;
  * Created by Robert Burek
  */
 public class Main {
+
+//    zamiast stałej możemy dodać je do enumy gdy jest ich więcej
+//    public static final String EXIT = "EXIT";
+
     public static void main(String[] args) throws Exception {
 
         // wygenerowanie danych
@@ -20,16 +24,21 @@ public class Main {
         ));
 
         // pobrać dane do wyszukiwania
+        System.out.print("Podaj hasło do szukiwania, lub EXIT by zakończyć: ");
         Scanner scanner = new Scanner(System.in);
         String query = scanner.nextLine();
 
         // wykonanie wyszukiwania
-        for (String string : daneKontaktowe) {
-            if (string.contains(query)) {
-                // wypisanie wyników
-                System.out.println(string);
+        do {
+            for (String string : daneKontaktowe) {
+                if (string.contains(query)) {
+                    // wypisanie wyników
+                    System.out.println(string);
+                }
             }
-        }
+            System.out.print("Podaj hasło do szukiwania, lub EXIT by zakończyć: ");
+            query = scanner.nextLine();
+        } while (!query.contains(MenuOptions.EXIT.name()));
 
     }
 }
