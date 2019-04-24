@@ -10,6 +10,9 @@ import java.util.Set;
  * Created by Robert Burek
  */
 public class Main {
+    public static final String WELCOME_MESSAGE = "Podaj hasło do szukiwania, lub EXIT by zakończyć: ";
+    public static final String GOODBYE_MESSAGE = "Zapraszamy ponownie!!!";
+
     private static Set<String> contacts;
     private static Scanner scanner;
     private static String input;
@@ -27,7 +30,7 @@ public class Main {
 
         // wykonanie wyszukiwania
         runSearchEngine();
-        System.out.println("Zapraszamy ponownie!!!");
+        System.out.println(GOODBYE_MESSAGE);
 
     }
 
@@ -39,13 +42,13 @@ public class Main {
                     System.out.println(string);
                 }
             }
-            System.out.print("Podaj hasło do szukiwania, lub EXIT by zakończyć: ");
+            System.out.print(WELCOME_MESSAGE);
             input = scanner.nextLine();
         }
     }
 
     private static void setUpTerminal() {
-        System.out.print("Podaj hasło do szukiwania, lub EXIT by zakończyć: ");
+        System.out.print(WELCOME_MESSAGE);
         scanner = new Scanner(System.in);
         input = scanner.nextLine();
     }
