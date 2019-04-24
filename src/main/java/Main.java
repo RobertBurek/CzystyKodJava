@@ -1,5 +1,6 @@
+import repository.ContactsRepo;
+
 import java.util.Scanner;
-import java.util.Set;
 
 //Zachłannego importu należy unikać w aplikacjach webowych
 //import java.util.*;
@@ -11,9 +12,9 @@ public class Main {
     public static final String WELCOME_MESSAGE = "Podaj hasło do szukiwania, lub EXIT by zakończyć: ";
     public static final String GOODBYE_MESSAGE = "Zapraszamy ponownie!!!";
 
-    private static Set<String> contacts;
     private static Scanner scanner;
     private static String input;
+    private static ContactsRepo contactsRepo;
 
 //    zamiast stałej możemy dodać je do enumy gdy jest ich więcej
 //    public static final String EXIT = "EXIT";
@@ -21,7 +22,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         // wygenerowanie danych - wczytanie danych
-        contacts = ContactGenerator.createContacts();
+        contactsRepo = ContactsRepo.init();
 
         // pobrać dane do wyszukiwania - przygotowanie terminalu
         setUpTerminal();
@@ -34,7 +35,9 @@ public class Main {
 
     private static void runSearchEngine() {
         while (!input.contains(MenuOptions.EXIT.name())) {
-            Finder.findContact(contacts, input);
+            for (String contact : contactsRepo.findContact(input)) {
+                System.out.println(contact);
+            }
             System.out.print(WELCOME_MESSAGE);
             input = scanner.nextLine();
         }
