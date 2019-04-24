@@ -34,7 +34,7 @@ public class Main {
     }
 
     private static void runSearchEngine() {
-        while (!input.contains(MenuOptions.EXIT.name())) {
+        while (!input.contains(MenuOptions.EXIT.name().toLowerCase())) {
             for (String contact : contactsRepo.findContact(input)) {
                 System.out.println(contact);
             }
