@@ -1,4 +1,5 @@
 import repository.ContactsRepo;
+import repository.model.ContactItem;
 
 import java.util.Scanner;
 
@@ -35,7 +36,7 @@ public class Main {
 
     private static void runSearchEngine() {
         while (!input.contains(MenuOptions.EXIT.name().toLowerCase())) {
-            for (String contact : contactsRepo.findContact(input)) {
+            for (ContactItem contact : contactsRepo.findContact(input)) {
                 System.out.println(contact);
             }
             System.out.print(WELCOME_MESSAGE);
