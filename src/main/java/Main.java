@@ -1,5 +1,3 @@
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -23,7 +21,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         // wygenerowanie danych - wczytanie danych
-        contacts = initContacts();
+        contacts = ContactGenerator.createContacts();
 
         // pobrać dane do wyszukiwania - przygotowanie terminalu
         setUpTerminal();
@@ -36,12 +34,7 @@ public class Main {
 
     private static void runSearchEngine() {
         while (!input.contains(MenuOptions.EXIT.name())) {
-            for (String string : contacts) {
-                if (string.contains(input)) {
-                    // wypisanie wyników
-                    System.out.println(string);
-                }
-            }
+            Finder.findContact(contacts, input);
             System.out.print(WELCOME_MESSAGE);
             input = scanner.nextLine();
         }
@@ -53,11 +46,4 @@ public class Main {
         input = scanner.nextLine();
     }
 
-    private static Set<String> initContacts() {
-        return new HashSet<String>(Arrays.asList(
-                "Anna Janicka a.janicka@mail.pl",
-                "Jan Janicka j.jan@wp.pl",
-                "Paweł Borek pawelpawelek@mmail.pl"
-        ));
-    }
 }
