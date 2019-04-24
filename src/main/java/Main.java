@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         // wygenerowanie danych
-        Set<String> daneKontaktowe = new HashSet<String>(Arrays.asList(
+        Set<String> contacts = new HashSet<String>(Arrays.asList(
                 "Anna Janicka a.janicka@mail.pl",
                 "Jan Janicka j.jan@wp.pl",
                 "Paweł Borek pawelpawelek@mmail.pl"
@@ -26,19 +26,19 @@ public class Main {
         // pobrać dane do wyszukiwania
         System.out.print("Podaj hasło do szukiwania, lub EXIT by zakończyć: ");
         Scanner scanner = new Scanner(System.in);
-        String query = scanner.nextLine();
+        String input = scanner.nextLine();
 
         // wykonanie wyszukiwania
         do {
-            for (String string : daneKontaktowe) {
-                if (string.contains(query)) {
+            for (String string : contacts) {
+                if (string.contains(input)) {
                     // wypisanie wyników
                     System.out.println(string);
                 }
             }
             System.out.print("Podaj hasło do szukiwania, lub EXIT by zakończyć: ");
-            query = scanner.nextLine();
-        } while (!query.contains(MenuOptions.EXIT.name()));
+            input = scanner.nextLine();
+        } while (!input.contains(MenuOptions.EXIT.name()));
 
     }
 }
