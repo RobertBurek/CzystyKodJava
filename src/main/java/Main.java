@@ -39,6 +39,7 @@ public class Main {
             for (ContactItem contact : contactsRepo.findContact(input)) {
                 System.out.println(contact);
             }
+            // no result - no info
             System.out.print(WELCOME_MESSAGE);
             input = scanner.nextLine();
         }

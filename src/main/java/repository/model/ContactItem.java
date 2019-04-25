@@ -47,11 +47,19 @@ public class ContactItem {
     public ContactItem() {
     }
 
+    /**
+     * Tworzy kontakt z jednym telefonem i jednym mailem
+     *
+     * @param fromCSV CSV String
+     * @return kontakt
+     */
+
+
     // 1 metoda - statyczne metody wytwórcze
-    public static ContactItem fromString(String from) {
+    public static ContactItem fromString(String fromCSV) {
         //rozbijamy stringa na pola i przypisujemy je obiektowi
         ContactItem contactItem = new ContactItem();
-        String[] args = from.split(",");
+        String[] args = fromCSV.split(",");
         contactItem.setName(args[0]);
         contactItem.setSurname(args[1]);
         contactItem.setMail(new MailRecords(args[2]));
