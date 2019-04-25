@@ -8,8 +8,8 @@ import java.util.Objects;
 public class ContactItem {
     private String name;
     private String surname;
-    private String mail;
-    private String phone;
+    private MailRecords mail;
+    private PhoneRecords phone;
 
     // 3 metoda
 //    public ContactItem newCreateContact() {
@@ -40,8 +40,8 @@ public class ContactItem {
     public ContactItem(String name, String surname, String mail, String phone) {
         this.name = name;
         this.surname = surname;
-        this.mail = mail;
-        this.phone = phone;
+        this.mail = new MailRecords(mail);
+        this.phone = new PhoneRecords(phone);
     }
 
     public ContactItem() {
@@ -54,8 +54,8 @@ public class ContactItem {
         String[] args = from.split(",");
         contactItem.setName(args[0]);
         contactItem.setSurname(args[1]);
-        contactItem.setMail(args[2]);
-        contactItem.setPhone(args[3]);
+        contactItem.setMail(new MailRecords(args[2]));
+        contactItem.setPhone(new PhoneRecords(args[3]));
         return contactItem;
     }
 
@@ -76,19 +76,19 @@ public class ContactItem {
         this.surname = surname;
     }
 
-    public String getMail() {
+    public MailRecords getMail() {
         return mail;
     }
 
-    public void setMail(String mail) {
+    public void setMail(MailRecords mail) {
         this.mail = mail;
     }
 
-    public String getPhone() {
+    public PhoneRecords getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(PhoneRecords phone) {
         this.phone = phone;
     }
 
